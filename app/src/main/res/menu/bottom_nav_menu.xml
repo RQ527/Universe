@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/counttime"
+        android:icon="@drawable/counttime"
+        android:title="@string/countTime" />
+
+    <item
+        android:id="@+id/universe"
+        android:icon="@drawable/universe"
+        android:title="@string/universe" />
+
+    <item
+        android:id="@+id/mine"
+        android:icon="@drawable/mine"
+        android:title="@string/mine" />
+
+</menu>
