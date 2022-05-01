@@ -17,6 +17,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import java.lang.reflect.ParameterizedType
 
 
@@ -40,7 +41,10 @@ abstract class BaseMvvmFragment<VM : ViewModel, VDB : ViewDataBinding> :
         //获得泛型参数的实际类型
         val vmClass =
             (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VM>
-        mViewModel = ViewModelProviders.of(this).get(vmClass)
+        mViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory(this.activity?.application!!)
+        ).get(vmClass)
         return mViewDataBind.root
     }
 
