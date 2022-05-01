@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/iv_pop"
+            android:src="@drawable/counttime"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <TextView
+            android:id="@+id/tv_pop"
+            android:text="星球名称"
+            android:textSize="16sp"
+            android:layout_width="80dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

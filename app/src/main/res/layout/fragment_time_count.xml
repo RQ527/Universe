@@ -5,7 +5,9 @@
     >
 
     <data>
-
+        <variable
+            name="time"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +19,7 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:padding="50dp"
-            android:src="@drawable/planet"
+            android:src="@drawable/planet0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +57,7 @@
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20:00"
+            android:text="@{time}"
             android:textSize="90sp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView"

@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.*
 import android.os.Vibrator
 import android.util.AttributeSet
+import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -24,7 +25,7 @@ class RingView(context: Context, attrs: AttributeSet) :
     private var ringPaint: Paint = Paint()
     private var pointPaint = Paint()
     private var detector: GestureDetector? = null
-    private var isBegin = false
+    var isBegin = false
     private var pointX = 0f
     private var pointY = 0f
 
@@ -43,8 +44,10 @@ class RingView(context: Context, attrs: AttributeSet) :
                     val vib =
                         this@RingView.context.applicationContext.getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
                     vib.vibrate(100)
+                    listener?.longPressed()
                     isBegin = true
                 }
+
             })
     }
 
@@ -93,20 +96,21 @@ class RingView(context: Context, attrs: AttributeSet) :
                         point = calculatePoint(mX, mY)
                         pointX = point.x.toFloat()
                         pointY = point.y.toFloat()
-                        minutes.value = calculateAngle()
+                        minutes.value = calculateMinutes()
 
                         invalidate()
                     }
                 }
             }
             MotionEvent.ACTION_UP -> {
+                listener?.up()
                 isBegin = false
             }
         }
         return true
     }
 
-    private fun calculateAngle(): Int {
+    private fun calculateMinutes(): Int {
         val angle =
             Math.toDegrees(atan(((-mWidth / 2 + pointX) / (pointY - mHeight / 2)).toDouble()))
                 .toInt()
@@ -163,30 +167,27 @@ class RingView(context: Context, attrs: AttributeSet) :
      * 设置分钟
      */
     fun setMinutes(minutes: Int) {
+        this.minutes.value = minutes
         val R = mWidth / 2 - 50f
         val angle = (minutes / 120.0) * 360
-        var x1 = abs(R * sin(angle))
-        var y1 = abs(R * cos(angle))
-        when (angle) {
-            in 0.0..90.0 -> {
-                x1 += mWidth / 2
-                y1 -= mHeight / 2
-            }
-            in 90.0..180.0 -> {
-                x1 += mWidth / 2
-                y1 += mHeight / 2
-            }
-            in 180.0..270.0 -> {
-                x1 -= mWidth / 2
-                y1 += mHeight / 2
-            }
-            in 270.0..360.0 -> {
-                x1 -= mWidth / 2
-                y1 -= mHeight / 2
-            }
-        }
+        var x1 = (R * sin(Math.toRadians(angle)))
+        var y1 = (R * cos(Math.toRadians(angle)))
+        x1 += mWidth / 2
+        y1 = mHeight / 2 - y1
+
         pointX = x1.toFloat()
         pointY = y1.toFloat()
         invalidate()
+    }
+
+    private var listener: OnStateListener? = null
+
+    interface OnStateListener {
+        fun longPressed()
+        fun up()
+    }
+
+    fun setStateListener(l: OnStateListener) {
+        listener = l
     }
 }
