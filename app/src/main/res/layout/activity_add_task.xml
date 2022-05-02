@@ -80,7 +80,7 @@
                 android:background="@null"
                 android:maxLength="4"
                 android:maxLines="1"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
         </LinearLayout>
 
         <LinearLayout

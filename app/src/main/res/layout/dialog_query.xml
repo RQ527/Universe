@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="提示"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
@@ -23,16 +23,15 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:gravity="center_vertical"
         android:id="@+id/tv_dialog_content"
-        android:layout_width="300dp"
+        android:layout_width="310dp"
         android:layout_height="80dp"
-        android:text="咦咦咦咦酸奶蛋糕色耐欧舒丹度搜VS"
-        android:textSize="25sp"
+        android:gravity="center_vertical"
+        android:text="该星球即将被点亮，你确定吗？？"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.026" />
 
@@ -42,30 +41,29 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tv_dialog_content"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_dialog_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dialog_content"
-        app:layout_constraintVertical_bias="0.36"
+        app:layout_constraintVertical_bias="0.205"
         tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/bt_dialog_cancel"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_button"
             android:text="取消"
-            android:textSize="25sp"
+            android:textSize="20sp"
             tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/bt_dialog_ensure"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="140dp"
             android:background="@drawable/shape_button"
             android:text="确定"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <View

@@ -152,7 +152,7 @@ class TimeCountFragment() :
         mViewModel.getAll().observe(this, {
             val list = mutableListOf<Task>()
             for (i in it!!) {
-                list.add(i)
+                if (i.actualDate=="未点亮") list.add(i)
             }
             data.clear()
             data.addAll(list)

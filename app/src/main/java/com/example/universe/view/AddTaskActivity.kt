@@ -109,7 +109,7 @@ class AddTaskActivity() : BaseMvvmActivity<AddTaskActivityViewModel, ActivityAdd
                 }
                 else -> {
                     val task = Task(
-                        id++,
+                        ++id,
                         mViewDataBind.evAddActivityName.text.toString(),
                         "planet${rvAdapter.selectedPosition}",
                         mViewDataBind.tvAddTaskDate.text.toString(),
