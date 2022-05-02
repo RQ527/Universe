@@ -12,6 +12,7 @@ import android.app.DatePickerDialog.OnDateSetListener
 import android.content.DialogInterface
 import android.content.Intent
 import android.text.format.DateUtils
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
@@ -79,6 +80,14 @@ class AddTaskActivity() : BaseMvvmActivity<AddTaskActivityViewModel, ActivityAdd
                 viewHolder?.itemView?.setBackgroundResource(R.color.white)
             }
         })
+        mViewDataBind.llAddActivityRemarks.setOnClickListener {
+            mViewDataBind.evAddActivityRemarks.apply {
+                isFocusable = true
+                isFocusableInTouchMode = true
+                requestFocus()
+            }
+            window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        }
 
         mViewDataBind.tvAddTaskDate.setOnClickListener {
             openCalender(this, mViewDataBind.tvAddTaskDate)//打开日历

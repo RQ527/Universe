@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="名称："
+                android:text="名称:"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -116,7 +116,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/ll_addActivity_remarks"
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
@@ -157,10 +157,10 @@
             android:background="@drawable/shape_button"
             android:text="创建"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="@+id/ll_addActivity_remarks"
             app:layout_constraintHorizontal_bias="0.475"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintStart_toStartOf="@+id/ll_addActivity_remarks"
+            app:layout_constraintTop_toBottomOf="@+id/ll_addActivity_remarks"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

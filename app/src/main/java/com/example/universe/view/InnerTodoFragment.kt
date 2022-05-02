@@ -2,10 +2,7 @@ package com.example.universe.view
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.BitmapDrawable
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -141,6 +138,12 @@ class InnerTodoFragment() :
 
             }
         }
+        remarksLl.setOnClickListener {
+            remarksEt.isFocusable = true
+            remarksEt.isFocusableInTouchMode = true
+            remarksEt.requestFocus()
+            activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        }
         deleteBt.setOnClickListener {
             //弹出询问
             QueryDialog(this.requireContext(), "该星球即将被删除，你确定吗？", object : QueryDialog.ClickCallBack {
@@ -155,8 +158,6 @@ class InnerTodoFragment() :
                 }
             }).show()
         }
-
-
 
         popupWindow = PopupWindow(
             contentView,
