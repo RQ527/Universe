@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/app_icon.xml" value="0.2611111111111111" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/counttime.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.26979166666666665" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/item_rv_selector.xml" value="0.26205128205128203" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/mine.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/point_normal.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/shape_popupwindow.xml" value="0.26564102564102565" />
@@ -16,8 +18,11 @@
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/tab_pressed.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/tab_selector.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/drawable/universe.xml" value="0.26979166666666665" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/activity_achieve_ment.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/activity_add_task.xml" value="0.22056159420289856" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/dialog_input.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/dialog_query.xml" value="0.20244565217391305" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/fragment_dashboard.xml" value="0.2441123188405797" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/fragment_home.xml" value="0.2441123188405797" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/fragment_inner_todo.xml" value="0.23505434782608695" />
@@ -25,9 +30,15 @@
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/fragment_mine.xml" value="0.2441123188405797" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/fragment_time_count.xml" value="0.2441123188405797" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/fragment_universe.xml" value="0.2441123188405797" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/item_rv_activity_add.xml" value="0.213768115942029" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/item_rv_inner_ufrag.xml" value="0.20244565217391305" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/item_rv_popupwindow.xml" value="0.22554347826086957" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/popuwindow.xml" value="0.22554347826086957" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/popuwindow_innertfrag.xml" value="0.20244565217391305" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/popuwindow_innerufrag.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/layout/popuwindow_timecountfrag.xml" value="0.20244565217391305" />
         <entry key="..\:/AndroidTool/AndroidProject/Universe/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25364583333333335" />
+        <entry key="..\:/AndroidTool/AndroidSDk/platforms/android-32/data/res/drawable-watch/sym_def_app_icon.xml" value="0.2611111111111111" />
       </map>
     </option>
   </component>

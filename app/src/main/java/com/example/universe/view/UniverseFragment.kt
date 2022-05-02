@@ -1,6 +1,7 @@
 package com.example.universe.view
 
 import android.util.Log
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.universe.base.BaseMvvmFragment
 import com.example.universe.R
@@ -41,5 +42,8 @@ class UniverseFragment(): BaseMvvmFragment<UniverseFragmentViewModel, FragmentUn
             mViewDataBind.tvInnerUniverse.isEnabled = true
             it.isEnabled = false
         }
+
     }
+
+
 }

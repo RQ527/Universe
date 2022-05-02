@@ -12,14 +12,14 @@ import com.example.universe.bean.Task
  */
 @Dao
 interface MyDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTask(task: Task)
 
     @Delete
     fun deleteTask(task: Task)
 
-    @Update
-    fun update(task: Task)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateTask(task: Task)
 
     @Query("SELECT * FROM task")
     fun getAllTasks():LiveData<List<Task>>

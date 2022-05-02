@@ -16,14 +16,16 @@ import com.example.universe.bean.Task
 @Database(entities = [Task::class], version = 1, exportSchema = false)
 abstract class MyDataBase : RoomDatabase() {
     companion object {
-        private const val DATABASE_NAME: String = "my_db.db"
+        private const val DATABASE_NAME: String = "universe_db.db"
         private var mInstance: MyDataBase?=null
         @Synchronized
         fun getInstance(context: Context): MyDataBase{
             if (mInstance===null) mInstance = Room.databaseBuilder(
                 context.applicationContext,
                 MyDataBase::class.java, DATABASE_NAME
-            ).build()
+            )
+                .fallbackToDestructiveMigration()
+                .build()
             return mInstance as MyDataBase
         }
 

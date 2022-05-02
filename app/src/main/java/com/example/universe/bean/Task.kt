@@ -14,15 +14,17 @@ import androidx.room.PrimaryKey
 data class Task(
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    var id: Int,
     @ColumnInfo(name = "name")
-    val name:String,
+    var name:String,
     @ColumnInfo(name = "picture")
-    val picture:String,
+    var picture:String,
     @ColumnInfo(name = "expectedDate")
-    val expectedDate:String,
+    var expectedDate:String,
     @ColumnInfo(name = "actualDate")
-    val actualDate:String,
+    var actualDate:String,
     @ColumnInfo(name = "duration")
-    val duration:String
+    var duration:String,
+    @ColumnInfo(name="remarks")
+    var remarks:String
 ) {}

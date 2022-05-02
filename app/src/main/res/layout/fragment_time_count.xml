@@ -27,8 +27,10 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_univ_frag_name"
             android:text="星球名称"
             android:textSize="25sp"
             android:background="@drawable/shape_tv"
@@ -58,7 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{time}"
-            android:textSize="90sp"
+            tools:text="00:00:00"
+            android:textSize="70sp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"

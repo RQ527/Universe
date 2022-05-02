@@ -9,4 +9,5 @@ import androidx.lifecycle.ViewModel
  * @date 2022/4/30
  */
 class ActivityMainViewModel():ViewModel() {
+
 }

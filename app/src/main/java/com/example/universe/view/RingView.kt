@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.*
 import android.os.Vibrator
 import android.util.AttributeSet
-import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -96,7 +95,7 @@ class RingView(context: Context, attrs: AttributeSet) :
                         point = calculatePoint(mX, mY)
                         pointX = point.x.toFloat()
                         pointY = point.y.toFloat()
-                        minutes.value = calculateMinutes()
+                        seconds.value = calculateMinutes()
 
                         invalidate()
                     }
@@ -123,7 +122,7 @@ class RingView(context: Context, attrs: AttributeSet) :
             } else {
                 360 - angle
             }
-        }) / 360.0) * 120).toInt()
+        }) / 360.0) * 120*60).toInt()
     }
 
     private fun isInRing(x: Float, y: Float): Boolean {
@@ -161,15 +160,15 @@ class RingView(context: Context, attrs: AttributeSet) :
         return mySize
     }
 
-    var minutes: MutableLiveData<Int> = MutableLiveData()
+    var seconds: MutableLiveData<Int> = MutableLiveData()
 
     /**
-     * 设置分钟
+     * 设置秒数
      */
-    fun setMinutes(minutes: Int) {
-        this.minutes.value = minutes
+    fun setMinutes(seconds: Int) {
+        this.seconds.value = seconds
         val R = mWidth / 2 - 50f
-        val angle = (minutes / 120.0) * 360
+        val angle = (seconds / (120.0*60) )* 360
         var x1 = (R * sin(Math.toRadians(angle)))
         var y1 = (R * cos(Math.toRadians(angle)))
         x1 += mWidth / 2

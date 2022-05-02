@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.universe.R
 import com.example.universe.bean.Task
-import com.example.universe.databinding.FragmentInnerTodoBinding
+import com.example.universe.databinding.ItemRvInnerTfragBinding
 import com.example.universe.databinding.ItemRvPopupwindowBinding
 import com.example.universe.model.selectPictures
 import com.example.universe.view.AddTaskActivity
@@ -17,23 +17,19 @@ import com.example.universe.view.AddTaskActivity
  * ...
  * @author 1799796122 (Ran Sixiang)
  * @email 1799796122@qq.com
- * @date 2022/5/1
+ * @date 2022/5/2
  */
-class PopupRvAdapter(val context: Context, var data: MutableList<Task>) :
-    RecyclerView.Adapter<PopupRvAdapter.MyHolder>() {
-    var lastPosition = -1
-    var selectedPosition = -1
+class InnerTodoFragRvAdapter(val context: Context, val data: MutableList<Task>) :
+    RecyclerView.Adapter<InnerTodoFragRvAdapter.MyHolder>() {
 
-    inner class MyHolder(_binding: ItemRvPopupwindowBinding) :
+    inner class MyHolder(_binding: ItemRvInnerTfragBinding) :
         RecyclerView.ViewHolder(_binding.root) {
         val binding = _binding
 
         init {
             binding.ivPop.setOnClickListener {
                 if (adapterPosition != data.size) {
-                    listener?.onClicked(adapterPosition, lastPosition)
-                    selectedPosition = adapterPosition
-                    lastPosition = adapterPosition
+                    listener?.onClicked(data[adapterPosition])
                 } else if (adapterPosition == data.size) {
                     context.startActivity(Intent(context, AddTaskActivity::class.java))
                 }
@@ -43,9 +39,9 @@ class PopupRvAdapter(val context: Context, var data: MutableList<Task>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
 
-        val binding = DataBindingUtil.inflate<ItemRvPopupwindowBinding>(
+        val binding = DataBindingUtil.inflate<ItemRvInnerTfragBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.item_rv_popupwindow,
+            R.layout.item_rv_inner_tfrag,
             parent,
             false
         )
@@ -54,10 +50,10 @@ class PopupRvAdapter(val context: Context, var data: MutableList<Task>) :
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        if (position==data.size){
+        if (position == data.size) {
             holder.binding.tvPop.text = "创建星球"
             holder.binding.ivPop.setImageResource(R.drawable.add)
-        }else {
+        } else {
             holder.binding.tvPop.text = data[position].name
             holder.binding.ivPop.setImageResource(selectPictures(data[position].picture))
         }
@@ -70,6 +66,7 @@ class PopupRvAdapter(val context: Context, var data: MutableList<Task>) :
     }
 
     interface OnItemClickedListener {
-        fun onClicked(position: Int, lastPosition: Int)
+        fun onClicked(task: Task)
     }
+
 }

@@ -2,6 +2,7 @@ package com.example.universe.model.repository
 
 import android.content.Context
 import com.example.universe.bean.Task
+import com.example.universe.model.room.MyDataBase
 
 /**
  * ...
@@ -10,9 +11,9 @@ import com.example.universe.bean.Task
  * @date 2022/5/1
  */
 class Repository(context: Context) {
-    private val roomWork = RoomWork(context)
-    fun insert(task: Task) = roomWork.insertTask(task)
-    fun delete(task: Task) = roomWork.deleteTask(task)
-    fun update(task: Task) = roomWork.updateTask(task)
-    fun getAll()=roomWork.getAllTasks()
+    private val dao = MyDataBase.getInstance(context).getDao()
+    fun insert(task: Task) {dao.insertTask(task)}
+    fun delete(task: Task) { dao.deleteTask(task)}
+    fun update(task: Task) { dao.updateTask(task)}
+    fun getAll()=dao.getAllTasks()
 }

@@ -23,6 +23,7 @@ import android.R
 import android.annotation.SuppressLint
 
 import android.app.PendingIntent
+import android.os.Vibrator
 import com.example.universe.view.MainActivity
 
 
@@ -50,14 +51,17 @@ class CountDownService : BroadcastReceiver() {
             p0
         )
         val notification: NotificationCompat.Builder = NotificationCompat.Builder(p0!!, channelId!!)
-            .setContentTitle("通知")
-            .setContentText("收到一条消息")
+            .setContentTitle("时间到！")
+            .setContentText("时间到啦，你的任务完成了吗？")
             .setContentIntent(pendingIntent)
             .setSmallIcon(R.mipmap.sym_def_app_icon)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
         val notificationManager = NotificationManagerCompat.from(p0)
         notificationManager.notify(100, notification.build())
+        val vib =
+            p0.getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
+        vib.vibrate(1000)
     }
 
     private fun createNotificationChannel(
