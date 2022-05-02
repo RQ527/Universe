@@ -28,7 +28,7 @@ import com.example.universe.view.MainActivity
 
 
 /**
- * ...
+ * ...  广播发送前台消息
  * @author 1799796122 (Ran Sixiang)
  * @email 1799796122@qq.com
  * @date 2022/4/30
@@ -38,7 +38,7 @@ class CountDownService : BroadcastReceiver() {
     override fun onReceive(p0: Context?, p1: Intent?) {
         val intent = Intent(p0, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        val pendingIntent: PendingIntent
+        val pendingIntent: PendingIntent//跳转activity
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
             pendingIntent = PendingIntent.getActivity(p0, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         } else {
@@ -50,6 +50,7 @@ class CountDownService : BroadcastReceiver() {
             NotificationManager.IMPORTANCE_HIGH,
             p0
         )
+        //构建
         val notification: NotificationCompat.Builder = NotificationCompat.Builder(p0!!, channelId!!)
             .setContentTitle("时间到！")
             .setContentText("时间到啦，你的任务完成了吗？")
@@ -58,12 +59,17 @@ class CountDownService : BroadcastReceiver() {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
         val notificationManager = NotificationManagerCompat.from(p0)
-        notificationManager.notify(100, notification.build())
+        //通知
+        notificationManager.notify(500, notification.build())
+        //震动
         val vib =
             p0.getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
-        vib.vibrate(1000)
+        vib.vibrate(800)
     }
 
+    /**
+     * 获取渠道id(模板代码)
+     */
     private fun createNotificationChannel(
         channelID: String,
         channelNAME: String,

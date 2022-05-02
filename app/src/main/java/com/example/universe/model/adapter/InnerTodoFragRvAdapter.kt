@@ -27,6 +27,7 @@ class InnerTodoFragRvAdapter(val context: Context, val data: MutableList<Task>) 
         val binding = _binding
 
         init {
+            //设置item监听，如果是最后一个就跳转添加界面
             binding.ivPop.setOnClickListener {
                 if (adapterPosition != data.size) {
                     listener?.onClicked(data[adapterPosition])
@@ -54,6 +55,7 @@ class InnerTodoFragRvAdapter(val context: Context, val data: MutableList<Task>) 
             holder.binding.tvPop.text = "创建星球"
             holder.binding.ivPop.setImageResource(R.drawable.add)
         } else {
+            //末尾给出添加的item
             holder.binding.tvPop.text = data[position].name
             holder.binding.ivPop.setImageResource(selectPictures(data[position].picture))
         }
@@ -61,6 +63,10 @@ class InnerTodoFragRvAdapter(val context: Context, val data: MutableList<Task>) 
 
     override fun getItemCount(): Int = data.size + 1
     private var listener: OnItemClickedListener? = null
+
+    /**
+     * 设置item监听
+     */
     fun setOnClickedListener(l: OnItemClickedListener) {
         listener = l
     }

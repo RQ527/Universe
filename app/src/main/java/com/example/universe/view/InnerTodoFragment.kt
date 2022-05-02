@@ -34,11 +34,12 @@ class InnerTodoFragment() :
 
     @SuppressLint("NotifyDataSetChanged")
     override fun afterCreate() {
-        mViewDataBind.rvInnerTFragment
+        //rv相关操作
         val data = mutableListOf<Task>()
         val rvAdapter = InnerTodoFragRvAdapter(this.requireContext(), data)
         mViewDataBind.rvInnerTFragment.adapter = rvAdapter
         mViewDataBind.rvInnerTFragment.layoutManager = GridLayoutManager(this.requireContext(), 2)
+
         mViewModel.getAll().observe(this, {
             val list = mutableListOf<Task>()
             for (i in it!!) {
@@ -50,6 +51,7 @@ class InnerTodoFragment() :
             data.addAll(list)
             rvAdapter.notifyDataSetChanged()
         })
+        //item设置监听打开弹窗
         rvAdapter.setOnClickedListener(object : InnerTodoFragRvAdapter.OnItemClickedListener {
             override fun onClicked(task: Task) {
                 openPopupWindow(task)
@@ -60,6 +62,7 @@ class InnerTodoFragment() :
 
     private var popupWindow: PopupWindow? = null
     private lateinit var contentView: View
+    //加载弹窗
     @SuppressLint("SetTextI18n")
     private fun openPopupWindow(task: Task) {
         contentView =
@@ -75,6 +78,7 @@ class InnerTodoFragment() :
         val lightBt = contentView.findViewById<Button>(R.id.bt_inTFragPop_light)
         val changBt = contentView.findViewById<Button>(R.id.bt_inTFragPop_change)
         val deleteBt = contentView.findViewById<Button>(R.id.bt_inTFragPop_delete)
+        //初始化
         planetIv.setImageResource(selectPictures(task.picture))
         nameTv.text = task.name
         durationTv.text = "${task.duration.toInt()/60}min${task.duration.toInt()%60}s"
@@ -84,6 +88,7 @@ class InnerTodoFragment() :
         dateTv.isClickable = false
         remarksEt.isFocusable = false
         remarksEt.isFocusableInTouchMode = false
+        //事件逻辑处理
         dateTv.setOnClickListener {
             openCalender(this.requireContext(),dateTv)
         }
@@ -137,6 +142,7 @@ class InnerTodoFragment() :
             }
         }
         deleteBt.setOnClickListener {
+            //弹出询问
             QueryDialog(this.requireContext(), "该星球即将被删除，你确定吗？", object : QueryDialog.ClickCallBack {
                 override fun onYesClick(dialog: QueryDialog) {
                     lifecycleScope.launch {
@@ -164,6 +170,9 @@ class InnerTodoFragment() :
         popupWindow?.isTouchable = true
     }
 
+    /**
+     * 弹出窗口
+     */
     private fun showPopupWindow() {
         if (popupWindow?.isShowing == true) {
             popupWindow?.dismiss()
@@ -171,6 +180,9 @@ class InnerTodoFragment() :
             popupWindow?.showAtLocation(contentView, Gravity.BOTTOM, 0, 0)
     }
 
+    /**
+     * 关闭窗口
+     */
     private fun dismissPopupWindow() {
         if (popupWindow?.isShowing == true) {
             popupWindow?.dismiss()

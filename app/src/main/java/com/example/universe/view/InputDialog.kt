@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.universe.R
 
 /**
- * ...
+ * ... 自定义警示窗口
  * @author 1799796122 (Ran Sixiang)
  * @email 1799796122@qq.com
  * @date 2022/5/2
@@ -31,6 +31,7 @@ class InputDialog(context: Context?) : AlertDialog(context)  {
     init {
         val inflate = LayoutInflater.from(context).inflate(R.layout.dialog_input, null)
         setView(inflate)
+        //去掉圆角四周的角
         window?.setBackgroundDrawableResource(R.drawable.shape_tv)
         //设置点击别的区域不关闭页面
         setCancelable(false)

@@ -13,6 +13,7 @@ class AchievementActivity : BaseMvvmActivity<AchievementActivityViewModel,Activi
 
     @SuppressLint("SetTextI18n")
     override fun afterCreate() {
+        //计算成就
         mViewModel.getAll().observe(this,{
             var maxTime:Int=0
             var maxDay:Int=0

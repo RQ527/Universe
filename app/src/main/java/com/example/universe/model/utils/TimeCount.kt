@@ -5,7 +5,7 @@ import com.example.universe.model.service.CountDownService
 import com.example.universe.view.TimeCountFragment
 
 /**
- * ...
+ * ... 倒计时(用handler实现)
  * @author 1799796122 (Ran Sixiang)
  * @email 1799796122@qq.com
  * @date 2022/5/2

@@ -45,17 +45,24 @@ class AddTaskActivity() : BaseMvvmActivity<AddTaskActivityViewModel, ActivityAdd
 
     @SuppressLint("SetTextI18n")
     override fun afterCreate() {
+        mViewModel.getAll().observe(this, {
+            id = it.size//从已有的数据追加id
+        })
+        //rv相关设置
         val rvAdapter = AddActivityRvAdapter()
         mViewDataBind.rvAddActivityPlanet.adapter = rvAdapter
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         mViewDataBind.rvAddActivityPlanet.layoutManager = linearLayoutManager
+        //设置item监听和选中状态
         rvAdapter.setOnClickedListener(object : AddActivityRvAdapter.OnItemClickedListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onClicked(position: Int, lastPosition: Int) {
+                //取消上一次位置的选中状态
                 val lastViewHolder =
                     mViewDataBind.rvAddActivityPlanet.findViewHolderForLayoutPosition(lastPosition)
                 lastViewHolder?.itemView?.setBackgroundResource(R.color.white)
+                //设置选中状态
                 val viewHolder =
                     mViewDataBind.rvAddActivityPlanet.findViewHolderForLayoutPosition(position)
                 viewHolder?.itemView?.setBackgroundResource(R.drawable.shape_tv)
@@ -66,6 +73,7 @@ class AddTaskActivity() : BaseMvvmActivity<AddTaskActivityViewModel, ActivityAdd
             RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
+                //滑动就取消选中状态
                 val viewHolder =
                     recyclerView.findViewHolderForLayoutPosition(rvAdapter.lastPosition)
                 viewHolder?.itemView?.setBackgroundResource(R.color.white)
@@ -73,8 +81,9 @@ class AddTaskActivity() : BaseMvvmActivity<AddTaskActivityViewModel, ActivityAdd
         })
 
         mViewDataBind.tvAddTaskDate.setOnClickListener {
-            openCalender(this,mViewDataBind.tvAddTaskDate)
+            openCalender(this, mViewDataBind.tvAddTaskDate)//打开日历
         }
+        //添加的屏蔽非法操作
         mViewDataBind.btAddActivity.setOnClickListener {
             when {
                 mViewDataBind.evAddActivityName.text.toString() == "" -> {
@@ -103,7 +112,7 @@ class AddTaskActivity() : BaseMvvmActivity<AddTaskActivityViewModel, ActivityAdd
                         withContext(Dispatchers.IO) {
                             mViewModel.insert(task)
                         }
-                        withContext(Dispatchers.Main){
+                        withContext(Dispatchers.Main) {
                             finish()
                         }
                     }

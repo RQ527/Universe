@@ -10,7 +10,7 @@ import com.example.universe.R
 import java.util.*
 
 /**
- * ...
+ * ... 工具
  * @author 1799796122 (Ran Sixiang)
  * @email 1799796122@qq.com
  * @date 2022/5/1
@@ -23,6 +23,10 @@ fun selectPictures(name:String):Int{
         "planet3"-> R.drawable.planet3
         "planet4"-> R.drawable.planet4
         "planet5"-> R.drawable.planet5
+        "planet6"-> R.drawable.planet6
+        "planet7"-> R.drawable.planet7
+        "planet8"-> R.drawable.planet8
+        "planet9"-> R.drawable.planet9
         "add"->R.drawable.add
         else -> R.drawable.planet0
     }
@@ -30,6 +34,10 @@ fun selectPictures(name:String):Int{
 fun toast(context: Context,what:String){
     Toast.makeText(context,what,Toast.LENGTH_SHORT).show()
 }
+
+/**
+ * 打开官方日历控件
+ */
 @SuppressLint("SetTextI18n")
 fun openCalender(context: Context,textView: TextView){
     val calendar = Calendar.getInstance()

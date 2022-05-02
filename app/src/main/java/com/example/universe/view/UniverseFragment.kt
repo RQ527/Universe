@@ -19,6 +19,7 @@ class UniverseFragment(): BaseMvvmFragment<UniverseFragmentViewModel, FragmentUn
     override fun getLayoutId(): Int  = R.layout.fragment_universe
 
     override fun afterCreate() {
+        //页面2
         mViewDataBind.viewPager.adapter = InnerFragmentPagerAdapter(this.requireActivity())
         mViewDataBind.viewPager.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {

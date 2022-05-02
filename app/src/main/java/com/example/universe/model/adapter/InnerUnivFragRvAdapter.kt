@@ -48,6 +48,7 @@ class InnerUnivFragRvAdapter(val context: Context, val data: MutableList<Task>) 
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         if (data.size != 0) {
+            //随机变换图片的大小和距离，达到随机摆放效果
             val scale = ((1..1000).random() / 1000.0).toFloat()
             holder.binding.ivRvInnerUFrag.setImageResource(selectPictures(data[position].picture))
             Log.d("RQ", "onBindViewHolder: ${holder.binding.ivRvInnerUFrag.measuredWidth}")
@@ -69,6 +70,10 @@ class InnerUnivFragRvAdapter(val context: Context, val data: MutableList<Task>) 
 
     override fun getItemCount(): Int = data.size
     private var listener: OnItemClickedListener? = null
+
+    /**
+     * 设置item监听
+     */
     fun setOnClickedListener(l: OnItemClickedListener) {
         listener = l
     }

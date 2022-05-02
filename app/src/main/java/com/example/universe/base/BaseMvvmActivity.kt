@@ -47,7 +47,7 @@ abstract class BaseMvvmActivity<VM : ViewModel, VDB : ViewDataBinding> :
     @LayoutRes
     protected abstract fun getLayoutId(): Int
     protected abstract fun afterCreate()
-
+    //CV自郭神
     private fun cancelStatusBar() {
         val window = this.window
         val decorView = window.decorView

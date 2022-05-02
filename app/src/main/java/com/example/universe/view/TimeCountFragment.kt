@@ -40,7 +40,9 @@ class TimeCountFragment() :
 
     @SuppressLint("SetTextI18n")
     override fun afterCreate() {
+        //加载popupWindow
         openPopupWindow()
+        //计时准备
         mViewModel.prepareTask {
             Log.d("RQ", "afterCreate: ${mViewDataBind.ringView.seconds.value}")
             if (mViewDataBind.ringView.seconds.value == 0) {
@@ -58,6 +60,7 @@ class TimeCountFragment() :
                 mViewModel.timeCountStart(1000)
             }
         }
+        //数据格式化处理
         mViewDataBind.time = "00:00:00"
         mViewDataBind.ringView.seconds.observe(this, {
             val hour = (it / 60 / 60)
@@ -76,7 +79,7 @@ class TimeCountFragment() :
             }
             mViewDataBind.time = str
         })
-
+        //再次按下停止计时
         mViewDataBind.ringView.setStateListener(object : RingView.OnStateListener {
             override fun longPressed() {
                 mViewModel.timeCountStop()
@@ -85,6 +88,7 @@ class TimeCountFragment() :
             }
 
             override fun up() {
+                //屏蔽非法操作
                 if (mViewDataBind.ringView.seconds.value != 0 && mViewDataBind.ringView.seconds.value != (120 * 60) && mViewDataBind.ringView.seconds.value != null) {
                     if (mViewDataBind.ringView.tag == null) {
                         toast(this@TimeCountFragment.requireContext(), "请选择一个未点亮的星球哦~")
@@ -96,13 +100,14 @@ class TimeCountFragment() :
                         isRunning = true
                     }
                 } else {
+                    //响应单次点击事件
                     //startActivity(Intent(this@TimeCountFragment.activity,AddTaskActivity::class.java))
                     if (!mViewDataBind.ringView.isBegin) showPopupWindow()
                 }
             }
         })
     }
-
+    //倒计时时，更新时间展示
     fun decrease() {
         var seconds = mViewDataBind.ringView.seconds.value
         if (seconds == null) {
@@ -139,7 +144,7 @@ class TimeCountFragment() :
         val rv = contentView.findViewById<RecyclerView>(R.id.rv_popupWindow)
         popCardView = contentView.findViewById(R.id.cd_pop)
         popCardView?.visibility = View.INVISIBLE
-
+        //rv相关
         val linearLayoutManager = LinearLayoutManager(this.context)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         rv.layoutManager = linearLayoutManager
@@ -154,7 +159,7 @@ class TimeCountFragment() :
             popupRvAdapter?.notifyDataSetChanged()
 
         })
-
+        //点击事件
         popupRvAdapter?.setOnClickedListener(object : PopupRvAdapter.OnItemClickedListener {
             @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
             override fun onClicked(position: Int, lastPosition: Int) {
@@ -168,6 +173,7 @@ class TimeCountFragment() :
                 durationTv.text = "${data[position].duration.toInt()/60}min${data[position].duration.toInt()%60}s"
             }
         })
+        //处理选中效果
         rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)

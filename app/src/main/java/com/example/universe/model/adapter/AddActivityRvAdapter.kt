@@ -28,6 +28,10 @@ class AddActivityRvAdapter() : RecyclerView.Adapter<AddActivityRvAdapter.MyHolde
         data.add(R.drawable.planet3)
         data.add(R.drawable.planet4)
         data.add(R.drawable.planet5)
+        data.add(R.drawable.planet6)
+        data.add(R.drawable.planet7)
+        data.add(R.drawable.planet8)
+        data.add(R.drawable.planet9)
     }
 
     inner class MyHolder(_binding: ItemRvActivityAddBinding) :
@@ -37,7 +41,6 @@ class AddActivityRvAdapter() : RecyclerView.Adapter<AddActivityRvAdapter.MyHolde
         init {
             binding.ivAddActivityItem.setOnClickListener {
                 listener?.onClicked(adapterPosition, lastPosition)
-
                 selectedPosition = adapterPosition
                 lastPosition = adapterPosition
 

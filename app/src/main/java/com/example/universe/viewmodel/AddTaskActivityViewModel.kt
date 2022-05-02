@@ -15,4 +15,5 @@ import com.example.universe.model.repository.Repository
 class AddTaskActivityViewModel(application: Application):AndroidViewModel(application) {
     private val repository = Repository(application)
     fun insert(task: Task) { repository.insert(task)}
+    fun getAll()=repository.getAll()
 }

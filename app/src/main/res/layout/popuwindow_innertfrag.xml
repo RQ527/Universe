@@ -54,7 +54,7 @@
             android:layout_marginLeft="10dp"
             android:text="已专注:"
             android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_inTFragPop_duration"
@@ -64,7 +64,7 @@
             android:background="@null"
             android:textColor="@color/black"
             android:maxLines="1"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -86,7 +86,7 @@
             android:layout_marginStart="10dp"
             android:text="预期点亮日期:"
             android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_inTFragPop_date"
@@ -95,13 +95,13 @@
             android:layout_marginStart="10dp"
             android:text="选择日期"
             android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_inTFragPop_remarks"
         android:layout_width="300dp"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="@+id/ll_inTFragPop_date"
         app:layout_constraintHorizontal_bias="0.0"
@@ -116,7 +116,7 @@
             android:layout_marginTop="10dp"
             android:text="备注:"
             android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/et_inTFragPop_remarks"
@@ -127,7 +127,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:maxLines="5"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
     </LinearLayout>
 
     <Button
@@ -137,7 +137,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/shape_button"
         android:text="点亮"
-        android:textSize="25sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -175,8 +175,7 @@
 
     <View
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="80dp"
         app:layout_constraintTop_toBottomOf="@+id/bt_inTFragPop_light"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

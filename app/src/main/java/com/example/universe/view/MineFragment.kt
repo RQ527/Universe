@@ -29,15 +29,14 @@ class MineFragment() : BaseMvvmFragment<MineFragmentViewModel, FragmentMineBindi
     override fun getLayoutId(): Int = R.layout.fragment_mine
 
     override fun afterCreate() {
-        val sp = this@MineFragment.requireActivity()
-            .getSharedPreferences("user", Context.MODE_PRIVATE)
-        val name = sp.getString("username", "网名")
-        val saying = sp.getString("usersaying", "个性签名")
-        mViewDataBind.tvMineFragSaying.text = saying
-        mViewDataBind.tvMineFragUsername.text = name
+        //查看本地是否有数据
+        val user = mViewModel.getUserInfo()
+        mViewDataBind.tvMineFragSaying.text = user[1]
+        mViewDataBind.tvMineFragUsername.text = user[0]
 
 
         mViewDataBind.ivMineFragUserIcon.setOnClickListener {
+            //打开相册
             val intent = Intent(Intent.ACTION_PICK, null)
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
             startActivityForResult(intent, 2)
@@ -45,33 +44,25 @@ class MineFragment() : BaseMvvmFragment<MineFragmentViewModel, FragmentMineBindi
         mViewDataBind.tvMineFragAchievement.setOnClickListener {
             startActivity(Intent(this.activity, AchievementActivity::class.java))
         }
+        //持久化签名
         mViewDataBind.tvMineFragUsername.setOnClickListener {
             InputDialog(this.requireContext(), "输入你的网名", object : InputDialog.ClickCallBack {
                 override fun onYesClick(dialog: InputDialog, text: String?) {
-                    if (text != null || text != "") {
+                    if (text != null && text != "") {
                         mViewDataBind.tvMineFragUsername.text = text
-                        val sp = this@MineFragment.requireActivity()
-                            .getSharedPreferences("user", Context.MODE_PRIVATE)
-
-                        val edit = sp.edit()
-                        edit.putString("username", text.toString())
-                        edit.apply()
+                        mViewModel.saveUserInfo("username",text)
                     }
                     dialog.dismiss()
                 }
             }).show()
         }
+        //持久化签名
         mViewDataBind.tvMineFragSaying.setOnClickListener {
             InputDialog(this.requireContext(), "输入你的个性签名", object : InputDialog.ClickCallBack {
                 override fun onYesClick(dialog: InputDialog, text: String?) {
-                    if (text != null || text != "") {
+                    if (text != null && text != "") {
                         mViewDataBind.tvMineFragSaying.text = text
-                        val sp = this@MineFragment.requireActivity()
-                            .getSharedPreferences("user", Context.MODE_PRIVATE)
-
-                        val edit = sp.edit()
-                        edit.putString("usersaying", text.toString())
-                        edit.apply()
+                        mViewModel.saveUserInfo("usersaying",text)
                     }
                     dialog.dismiss()
                 }

@@ -106,5 +106,8 @@
             android:text="切换"
             android:textSize="25sp" />
     </androidx.cardview.widget.CardView>
-
+    <View
+        android:layout_marginTop="330dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
 </androidx.cardview.widget.CardView>

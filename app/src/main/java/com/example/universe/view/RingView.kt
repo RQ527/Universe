@@ -12,7 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlin.math.*
 
 /**
- * ...
+ * ... 自定义计时器
  * @author 1799796122 (Ran Sixiang)
  * @email 1799796122@qq.com
  * @date 2022/4/30
@@ -21,11 +21,11 @@ class RingView(context: Context, attrs: AttributeSet) :
     androidx.appcompat.widget.AppCompatImageView(context, attrs) {
     private var mHeight: Int = 0
     private var mWidth: Int = 0
-    private var ringPaint: Paint = Paint()
-    private var pointPaint = Paint()
+    private var ringPaint: Paint = Paint() //画圆环
+    private var pointPaint = Paint() //画圆点
     private var detector: GestureDetector? = null
-    var isBegin = false
-    private var pointX = 0f
+    var isBegin = false //是否开始
+    private var pointX = 0f //圆点位置
     private var pointY = 0f
 
     init {
@@ -40,9 +40,11 @@ class RingView(context: Context, attrs: AttributeSet) :
         detector =
             GestureDetector(this.context, object : GestureDetector.SimpleOnGestureListener() {
                 override fun onLongPress(e: MotionEvent?) {
+                    //按下震动提示成功
                     val vib =
                         this@RingView.context.applicationContext.getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
                     vib.vibrate(100)
+                    //响应监听
                     listener?.longPressed()
                     isBegin = true
                 }
@@ -57,6 +59,7 @@ class RingView(context: Context, attrs: AttributeSet) :
         mWidth = getMySize(100, widthMeasureSpec)
         setMeasuredDimension(mWidth, mHeight)
         if (!measureIsFinished) {
+            //初始化一次圆点
             pointX = (mWidth / 2).toFloat()
             pointY = 50f
             measureIsFinished = true
@@ -65,12 +68,14 @@ class RingView(context: Context, attrs: AttributeSet) :
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        //画圆环
         canvas.drawCircle(
             (mWidth / 2).toFloat(),
             (mHeight / 2).toFloat(),
             mWidth / 2 - 50f,
             ringPaint
         )
+        //画圆点
         drawPoint(pointX, pointY, canvas)
     }
 
@@ -90,12 +95,13 @@ class RingView(context: Context, attrs: AttributeSet) :
                 mX = event.x
                 mY = event.y
                 if (isBegin) {
-
+                    //表示已经长按了
                     if (!isInRing(mX, mY)) {
+                        //判断是否在一定范围内
                         point = calculatePoint(mX, mY)
                         pointX = point.x.toFloat()
                         pointY = point.y.toFloat()
-                        seconds.value = calculateMinutes()
+                        seconds.value = calculateMinutes()//更新时间
 
                         invalidate()
                     }
@@ -108,7 +114,7 @@ class RingView(context: Context, attrs: AttributeSet) :
         }
         return true
     }
-
+    //根据角度计算时间
     private fun calculateMinutes(): Int {
         val angle =
             Math.toDegrees(atan(((-mWidth / 2 + pointX) / (pointY - mHeight / 2)).toDouble()))
@@ -124,14 +130,14 @@ class RingView(context: Context, attrs: AttributeSet) :
             }
         }) / 360.0) * 120*60).toInt()
     }
-
+    //是否在一定范围的园内
     private fun isInRing(x: Float, y: Float): Boolean {
         val r2 =
             ((x - mWidth / 2) * (x - mWidth / 2) + (y - mHeight / 2) * (y - mHeight / 2)).toDouble()
         val r = sqrt(r2)
         return r <= mWidth / 2 - 400
     }
-
+    //通过手指移动计算圆点位置
     private fun calculatePoint(x: Float, y: Float): Point {
         val R = (mWidth / 2 - 50f)
         val r2 =
@@ -160,7 +166,7 @@ class RingView(context: Context, attrs: AttributeSet) :
         return mySize
     }
 
-    var seconds: MutableLiveData<Int> = MutableLiveData()
+    var seconds: MutableLiveData<Int> = MutableLiveData()//时间
 
     /**
      * 设置秒数
@@ -168,6 +174,7 @@ class RingView(context: Context, attrs: AttributeSet) :
     fun setMinutes(seconds: Int) {
         this.seconds.value = seconds
         val R = mWidth / 2 - 50f
+        //根据时间计算点的坐标
         val angle = (seconds / (120.0*60) )* 360
         var x1 = (R * sin(Math.toRadians(angle)))
         var y1 = (R * cos(Math.toRadians(angle)))
@@ -180,7 +187,7 @@ class RingView(context: Context, attrs: AttributeSet) :
     }
 
     private var listener: OnStateListener? = null
-
+    //监听
     interface OnStateListener {
         fun longPressed()
         fun up()

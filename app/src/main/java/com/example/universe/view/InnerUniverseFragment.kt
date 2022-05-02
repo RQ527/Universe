@@ -31,10 +31,12 @@ class InnerUniverseFragment() :BaseMvvmFragment<InnerUniverseFragmentViewModel,F
 
     @SuppressLint("NotifyDataSetChanged")
     override fun afterCreate() {
+        //rv相关
         val data = mutableListOf<Task>()
         val rvAdapter = InnerUnivFragRvAdapter(this.requireContext(), data)
         mViewDataBind.rvInnerUFragment.adapter = rvAdapter
         mViewDataBind.rvInnerUFragment.layoutManager = LinearLayoutManager(this.requireContext())
+
         mViewModel.getAll().observe(this, {
             val list = mutableListOf<Task>()
             for (i in it!!) {
@@ -47,6 +49,7 @@ class InnerUniverseFragment() :BaseMvvmFragment<InnerUniverseFragmentViewModel,F
             data.addAll(list)
             rvAdapter.notifyDataSetChanged()
         })
+        //监听
         rvAdapter.setOnClickedListener(object :InnerUnivFragRvAdapter.OnItemClickedListener{
             override fun onClicked(task: Task) {
                 openPopupWindow(task)

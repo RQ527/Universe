@@ -30,6 +30,7 @@ class PopupRvAdapter(val context: Context, var data: MutableList<Task>) :
 
         init {
             binding.ivPop.setOnClickListener {
+                //排除最后的添加按钮
                 if (adapterPosition != data.size) {
                     listener?.onClicked(adapterPosition, lastPosition)
                     selectedPosition = adapterPosition
@@ -58,6 +59,7 @@ class PopupRvAdapter(val context: Context, var data: MutableList<Task>) :
             holder.binding.tvPop.text = "创建星球"
             holder.binding.ivPop.setImageResource(R.drawable.add)
         }else {
+            //末尾给出创建按钮
             holder.binding.tvPop.text = data[position].name
             holder.binding.ivPop.setImageResource(selectPictures(data[position].picture))
         }

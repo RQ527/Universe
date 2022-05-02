@@ -70,7 +70,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="名称："
                 android:textColor="@color/black"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/ev_add_activity_name"
@@ -87,45 +87,46 @@
             android:id="@+id/linearLayout2"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/shape_tv"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="预期点亮日期:"
                 android:textColor="@color/black"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/tv_add_task_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:text="选择日期"
                 android:textColor="@color/black"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/shape_tv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/linearLayout2"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="0.053"
             tools:ignore="MissingConstraints">
 
             <TextView
@@ -135,7 +136,7 @@
                 android:layout_marginTop="10dp"
                 android:text="备注:"
                 android:textColor="@color/black"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/ev_add_activity_remarks"
@@ -145,14 +146,14 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:maxLines="5"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/bt_add_activity"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/shape_button"
             android:text="创建"
             android:textSize="25sp"
