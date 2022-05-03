@@ -10,9 +10,11 @@
 
 ### 1.使用上
 
-
+<img src="https://github.com/RQ527/Test3/blob/master/p1.jpg" width="200" height="400" />
 
 单击图中圆环即可弹出选择按钮，若没有数据可创建。
+
+<img src=https://github.com/RQ527/Test3/blob/master/p2.jpg width="200" height="400" />
 
 选择完要专注的事件之后即可开始计时。
 
@@ -40,5 +42,9 @@ popupWindow的弹出控制
 
 ### 4.一些使用示例
 
+
+<img src=https://github.com/RQ527/Test3/blob/master/g1.gif height="400" />  
+<img src=https://github.com/RQ527/Test3/blob/master/g2.gif height="400" />
+<img src=https://github.com/RQ527/Test3/blob/master/g3.gif height="400" />
 
 
